@@ -1,0 +1,275 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		<title>SmartPark</title>
+		
+		<!-- Favicons -->
+		<link type="image/x-icon" href="/static/assets/img/favicon.png" rel="icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="/static/assets/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="/static/assets/plugins/fontawesome/css/all.min.css">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="/static/assets/css/style.css">
+		
+		
+		
+		
+	
+	</head>
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+		
+			<!-- Header -->
+			<header class="header">
+				<nav class="navbar navbar-expand-lg header-nav">
+					<div class="navbar-header">
+						<a id="mobile_btn" href="javascript:void(0);">
+							<span class="bar-icon">
+								<span></span>
+								<span></span>
+								<span></span>
+							</span>
+						</a>
+						<a href="" class="navbar-brand logo">
+							<h1 class="logo">SmartPark</h1>
+							<!-- <img src="/static/assets/img/logo.png" class="img-fluid" alt="Logo"> -->
+						</a>
+					</div>
+					<div class="main-menu-wrapper">
+						<div class="menu-header">
+							<a href="index-2.html" class="menu-logo">
+								<!-- <img src="assets/img/logo1.png" class="img-fluid" alt="Logo"> -->
+							</a>
+							<a id="menu_close" class="menu-close" href="javascript:void(0);">
+								<i class="fas fa-times"></i>
+							</a>
+						</div>
+						<ul class="main-nav">
+							<li class="active">
+								<a href="/">Home</a>
+							</li>
+							
+							{% if user.is_authenticated %}
+							<!-- <li class="has-submenu">
+								<a href="#">Hello,{{user.first_name}}</a>
+								
+							</li> -->
+							
+							{% if user.is_superuser %}	
+							<li class="has-submenu">
+								<a href="creatparkingslot">Create Parking Slots</a>
+							</li>
+							
+							{% else %}
+							<li class="has-submenu">
+								<a href="/booking-success">My Bookings</a>
+						
+							</li>
+							{% endif %}
+							<!-- <li class="has-submenu">
+								<a href="logout">Logout!</a>
+							</li> -->
+							
+							{% else %}
+							<li class="has-submenu">
+								<a href="login">Login</a>
+							</li>	
+							<li class="has-submenu">
+								<a href="register">Register</a>
+						   </li>
+							{% endif %}
+						
+							
+							<!-- /Header Right Menu -->
+							{% if user.is_authenticated %}	
+							<ul class="main-nav">
+								<!-- User Menu -->
+								<li class="nav-item dropdown has-arrow show">
+									<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
+										<span class="user-img"><img class="rounded-circle" src="/static/assets/img/user.png" width="31" alt="Ryan Taylor"></span>
+									</a>
+									<div class="dropdown-menu " x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-127px, 60px, 0px);">
+										<div class="user-header">
+											<div class="avatar avatar-sm">
+												<img src="/static/assets/img/user.png" alt="User Image" class="avatar-img rounded-circle">
+											</div>
+											<div class="user-text">
+												<h6>{{user.first_name}}</h6>
+												{% if user.is_superuser %}	
+													<p class="text-muted mb-0">Administrator</p>
+												{% else %}
+												<p class="text-muted mb-0">User</p>
+												{% endif %}
+											</div>
+										</div>
+										<a class="dropdown-item" href="profile">My Profile</a>
+										<a class="dropdown-item" href="logout">Logout</a>
+									</div>
+								</li>
+								<!-- /User Menu -->
+							</ul>	
+							{% endif %}
+														
+						</div>							 
+					</div>		 
+				</nav>				
+			</header>
+			<!-- /Header -->
+			
+
+   {% block content %}
+
+   {% endblock %}
+   
+			
+			<!-- Footer -->
+			<footer class="footer">
+				
+				<!-- Footer Top -->
+				<div class="footer-top">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-4 col-md-6">
+							
+								<!-- Footer Widget -->
+								<div class="footer-widget footer-about">
+									<div class="footer-logo">
+										<h1 class="logo" style="color:white;">SmartPark</h1>
+									</div>
+									<div class="footer-about-content">
+										<p>Book your parking<br> or<br> EV charging slots </p>
+										<div class="social-icon">
+											<ul>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+												</li>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-twitter"></i> </a>
+												</li>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+												</li>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+												</li>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-dribbble"></i> </a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!-- /Footer Widget -->
+								
+							</div>
+							
+							<div class="col-lg-4 col-md-6">
+							
+								<!-- Footer Widget -->
+								<div class="footer-widget footer-menu">
+									<h2 class="footer-title">Useful Links</h2>
+									<ul>
+										<li><a href="home"><i class="fas fa-angle-double-right"></i>Home</a></li>
+										<li><a href="login"><i class="fas fa-angle-double-right"></i> Login</a></li>
+										<li><a href="register"><i class="fas fa-angle-double-right"></i> Register</a></li>
+										<li><a href="booking"><i class="fas fa-angle-double-right"></i> Booking</a></li>
+										
+									</ul>
+								</div>
+								<!-- /Footer Widget -->
+								
+							</div>
+							
+							
+							<div class="col-lg-4 col-md-6">
+							
+								<!-- Footer Widget -->
+								<div class="footer-widget footer-contact">
+									<h2 class="footer-title">Contact Us</h2>
+									<div class="footer-contact-info">
+										<div class="footer-address">
+											<span><i class="fas fa-map-marker-alt"></i></span>
+											<p> Pune, Maharastra</p>
+										</div>
+										<p>
+											<i class="fas fa-phone-alt"></i>
+											+91 9921149565
+										</p>
+										<p class="mb-0">
+											<i class="fas fa-envelope"></i>
+											smartpark@example.com
+										</p>
+									</div>
+								</div>
+								<!-- /Footer Widget -->
+								
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<!-- /Footer Top -->
+				
+				<!-- Footer Bottom -->
+                <div class="footer-bottom">
+					<div class="container-fluid">
+					
+						<!-- Copyright -->
+						<div class="copyright">
+							<div class="row">
+								<div class="col-md-6 col-lg-6">
+									<div class="copyright-text">
+										<p class="mb-0"><a href="#">SmartPark</a></p>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-6">
+								
+									<!-- Copyright Menu -->
+									<div class="copyright-menu">
+										<ul class="policy-menu">
+											<li><a href="#">Terms and Conditions</a></li>
+											<li><a href="#">Policy</a></li>
+										</ul>
+									</div>
+									<!-- /Copyright Menu -->
+									
+								</div>
+							</div>
+						</div>
+						<!-- /Copyright -->
+						
+					</div>
+				</div>
+				<!-- /Footer Bottom -->
+				
+			</footer>
+			<!-- /Footer -->
+		   
+	   </div>
+	   <!-- /Main Wrapper -->
+	  
+		<!-- jQuery -->
+		<script src="/static/assets/js/jquery.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="/static/assets/js/popper.min.js"></script>
+		<script src="/static/assets/js/bootstrap.min.js"></script>
+		
+		<!-- Slick JS -->
+		<script src="/static/assets/js/slick.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="/static/assets/js/script.js"></script>
+		
+</body>
+</html>

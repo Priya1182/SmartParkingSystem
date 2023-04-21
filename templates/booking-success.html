@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+			<!-- Page Content -->
+			<div class="content success-page-cont">
+				<div class="container-fluid">
+				
+					<div class="row justify-content-center">
+						<div class="col-lg-6">
+						
+							<!-- Success Card -->
+							<div class="card success-card">
+								<div class="card-body">
+									<div class="success-cont">
+										<i class="fas fa-check"></i>
+										<h3>Slot booked Successfully!</h3>
+										<p>Slot booked at <strong>Slot 1{% for a in x%}
+											</strong><br> on <strong>12 Nov 2019 5:00PM at Pune </strong></p>
+										<a href="invoice-view.html" class="btn btn-primary view-inv-btn">View Invoice</a>
+										
+																		</div>
+								</div>
+							</div>
+							<!-- /Success Card -->
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>		
+			<!-- /Page Content -->
+     
+		<!-- jQuery -->
+		<script src="assets/js/jquery.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="assets/js/popper.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="assets/js/script.js"></script>
+		
+	</body>
+{% endblock %}

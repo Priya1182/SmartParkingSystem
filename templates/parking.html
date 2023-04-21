@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="content" style="background-color:white;">
+	<div class="container-fluid">
+
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
+			 <div style="text-align: center; background-color: green;">
+				  {% for message in messages %}
+				   <h3>{{message}}</h3>
+				   {% endfor %}
+				    
+			 </div>
+				<!-- Register Content -->
+				<div class="account-content">
+					<div class="row">
+						<div class="col">
+							<h3 style="text-align: center;">Available  Slots</h3>
+							   <table class="table">
+										<thead class="thead-dark">
+											<tr>
+												<th scope="col">ID</th>
+												<th scope="col">Name</th>
+												<th scope="col">Location</th>
+												<th scope="col">Slot Type</th>
+												<th scope="col">Date</th>
+												<th scope="col">No of Slot</th>
+												<th scope="col"></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+											  {% for each in supers %}
+												    <tr>
+														<td>{{  each.parkid }}</td>	
+														<td>{{ each.park_name }}</td>	
+														<td>{{  each.park_location }}</td>	
+														<td>{{ each.slot_type }}</td>
+														<td>{{ each.date }}</td>
+														<td>{{ each.slotsNo }}</</td>
+														
+												    <td>
+												    	<form  method="POST" action="checkout" >
+												    	{% csrf_token %}
+															<input type="hidden" value="Parking" name="slothidden"/>
+															<button type="submit" style=" border: none;
+															padding: 10px 15px;
+															border-radius: 25px;
+															background:#1161ee; color: white;">Book</button>
+                                                        </form>
+                                                    </td>
+												    </tr>
+											    {% endfor %}
+											</tr>
+										</tbody>
+								</table>	
+						</div>
+						
+					</div>
+				</div>
+				<!-- /Register Content -->
+
+			</div>
+		</div>
+
+	</div>
+
+</div>		
+
+{% endblock %} 
+
+ 
